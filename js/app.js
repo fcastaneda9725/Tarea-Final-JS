@@ -25,6 +25,7 @@ function calculadora() {
   var ocho = document.getElementById('8');
   var nueve = document.getElementById('9');
 
+  //Función para captar clicks en la pantalla
   function clicks() {
     uno.onclick = function (e) {
       if (pantalla.innerHTML == '0') {
