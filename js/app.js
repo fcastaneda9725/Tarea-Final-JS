@@ -28,13 +28,15 @@ function calculadora() {
   //Función para captar clicks en la pantalla
   function clicks() {
     uno.onclick = function (e) {
-      if (pantalla.innerHTML == '0') {
-        pantalla.innerHTML = '';
-        pantalla.innerHTML = pantalla.innerHTML + '1';
-      }else {
-        pantalla.innerHTML = pantalla.innerHTML + '1';
-      }
-    };
+          if (pantalla.innerHTML == '0') {
+            pantalla.innerHTML = '';
+            pantalla.innerHTML = pantalla.innerHTML + '1';
+          }else {
+            pantalla.innerHTML = pantalla.innerHTML + '1';
+          }
+
+          validar(pantalla);
+        };
 
     dos.onclick = function (e) {
       if (pantalla.innerHTML == '0') {
@@ -43,6 +45,8 @@ function calculadora() {
       }else {
         pantalla.innerHTML = pantalla.innerHTML + '2';
       }
+
+      validar(pantalla);
     };
 
     tres.onclick = function (e) {
@@ -52,6 +56,8 @@ function calculadora() {
       }else {
         pantalla.innerHTML = pantalla.innerHTML + '3';
       }
+
+      validar(pantalla);
     };
 
     cuatro.onclick = function (e) {
@@ -61,6 +67,8 @@ function calculadora() {
       }else {
         pantalla.innerHTML = pantalla.innerHTML + '4';
       }
+
+      validar(pantalla);
     };
 
     cinco.onclick = function (e) {
@@ -70,6 +78,8 @@ function calculadora() {
       }else {
         pantalla.innerHTML = pantalla.innerHTML + '5';
       }
+
+      validar(pantalla);
     };
 
     seis.onclick = function (e) {
@@ -79,6 +89,8 @@ function calculadora() {
       }else {
         pantalla.innerHTML = pantalla.innerHTML + '6';
       }
+
+      validar(pantalla);
     };
 
     siete.onclick = function (e) {
@@ -88,6 +100,8 @@ function calculadora() {
       }else {
         pantalla.innerHTML = pantalla.innerHTML + '7';
       }
+
+      validar(pantalla);
     };
 
     ocho.onclick = function (e) {
@@ -97,6 +111,8 @@ function calculadora() {
       }else {
         pantalla.innerHTML = pantalla.innerHTML + '8';
       }
+
+      validar(pantalla);
     };
 
     nueve.onclick = function (e) {
@@ -106,6 +122,8 @@ function calculadora() {
       }else {
         pantalla.innerHTML = pantalla.innerHTML + '9';
       }
+
+      validar(pantalla);
     };
 
     cero.onclick = function (e) {
@@ -115,8 +133,19 @@ function calculadora() {
       }else {
         pantalla.innerHTML = pantalla.innerHTML + '0';
       }
+
+      validar(pantalla);
     };
 
+  }
+
+  function validar(display) {
+    if (display.innerHTML.length < 8) {
+      return pantalla;
+    }else {
+      pantalla.innerHTML = display.innerHTML.substr(0, 8);
+
+    }
   }
 
   clicks();
