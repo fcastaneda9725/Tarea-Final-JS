@@ -24,6 +24,9 @@ function calculadora() {
   var siete = document.getElementById('7');
   var ocho = document.getElementById('8');
   var nueve = document.getElementById('9');
+  var operacion = '';
+  var operandoa = 0;
+  var operandob = 0;
 
   //Función para captar clicks en la pantalla
   function clicks() {
@@ -137,8 +140,20 @@ function calculadora() {
       validar(pantalla);
     };
 
+    suma.onclick = function (e) {
+      operandoa = pantalla.innerHTML;
+      operacion = '+';
+      limpiarOperacion();
+    };
+
+    igual.onclick = function (e) {
+      operandob = pantalla.innerHTML;
+      operaciones();
+      validar(pantalla);
+    };
   }
 
+  //Funcion para validar que solo existan 8 caracteres en la pantalla
   function validar(display) {
     if (display.innerHTML.length < 8) {
       return pantalla;
@@ -146,6 +161,28 @@ function calculadora() {
       pantalla.innerHTML = display.innerHTML.substr(0, 8);
 
     }
+  }
+
+  function operaciones() {
+    switch (operacion) {
+      case '+':
+        resultado = parseFloat(operandoa) + parseFloat(operandob);
+        break;
+      case '-':
+        resultado = operandoa - operandob;
+        break;
+      case '*':
+        resultado = operandoa * operandob;
+        break;
+      case '/':
+        resultado = operandoa / operandob;
+        break;
+    }
+    pantalla.innerHTML = resultado;
+  }
+
+  function limpiarOperacion() {
+    pantalla.innerHTML = '';
   }
 
   clicks();
