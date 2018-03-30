@@ -140,9 +140,35 @@ function calculadora() {
       validar(pantalla);
     };
 
+    punto.onclick = function (e) {
+      //Validacion par ver si existe el punto dentro de los numeros
+      if (pantalla.innerHTML.indexOf('.') != 1) {
+        pantalla.innerHTML = pantalla.innerHTML + '.';
+        validar(pantalla);
+      }
+    };
+
     suma.onclick = function (e) {
       operandoa = pantalla.innerHTML;
       operacion = '+';
+      limpiarOperacion();
+    };
+
+    resta.onclick = function (e) {
+      operandoa = pantalla.innerHTML;
+      operacion = '-';
+      limpiarOperacion();
+    };
+
+    multiplicacion.onclick = function (e) {
+      operandoa = pantalla.innerHTML;
+      operacion = '*';
+      limpiarOperacion();
+    };
+
+    division.onclick = function (e) {
+      operandoa = pantalla.innerHTML;
+      operacion = '/';
       limpiarOperacion();
     };
 
@@ -163,24 +189,26 @@ function calculadora() {
     }
   }
 
+  //Funcion que realiza las operaciones
   function operaciones() {
     switch (operacion) {
       case '+':
         resultado = parseFloat(operandoa) + parseFloat(operandob);
         break;
       case '-':
-        resultado = operandoa - operandob;
+        resultado = parseFloat(operandoa) - parseFloat(operandob);
         break;
       case '*':
-        resultado = operandoa * operandob;
+        resultado = parseFloat(operandoa) * parseFloat(operandob);
         break;
       case '/':
-        resultado = operandoa / operandob;
+        resultado = parseFloat(operandoa) / parseFloat(operandob);
         break;
     }
     pantalla.innerHTML = resultado;
   }
 
+  //Funcion que limpia la pantalla mientras se hace una operacion
   function limpiarOperacion() {
     pantalla.innerHTML = '';
   }
