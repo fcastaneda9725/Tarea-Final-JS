@@ -27,10 +27,13 @@ function calculadora() {
   var operacion = '';
   var operandoa = 0;
   var operandob = 0;
+  var teclas = document.getElementsByClassName('tecla');
 
   //Función para captar clicks en la pantalla
   function clicks() {
+    var identificador = 0;
     uno.onclick = function (e) {
+          identificador = 12;
           if (pantalla.innerHTML == '0') {
             pantalla.innerHTML = '';
             pantalla.innerHTML = pantalla.innerHTML + '1';
@@ -39,9 +42,11 @@ function calculadora() {
           }
 
           validar(pantalla);
+          cambioTamanio(identificador);
         };
 
     dos.onclick = function (e) {
+      identificador = 13;
       if (pantalla.innerHTML == '0') {
         pantalla.innerHTML = '';
         pantalla.innerHTML = pantalla.innerHTML + '2';
@@ -50,9 +55,11 @@ function calculadora() {
       }
 
       validar(pantalla);
+      cambioTamanio(identificador);
     };
 
     tres.onclick = function (e) {
+      identificador = 14;
       if (pantalla.innerHTML == '0') {
         pantalla.innerHTML = '';
         pantalla.innerHTML = pantalla.innerHTML + '3';
@@ -61,9 +68,11 @@ function calculadora() {
       }
 
       validar(pantalla);
+      cambioTamanio(identificador);
     };
 
     cuatro.onclick = function (e) {
+      identificador = 8;
       if (pantalla.innerHTML == '0') {
         pantalla.innerHTML = '';
         pantalla.innerHTML = pantalla.innerHTML + '4';
@@ -72,9 +81,11 @@ function calculadora() {
       }
 
       validar(pantalla);
+      cambioTamanio(identificador);
     };
 
     cinco.onclick = function (e) {
+      identificador = 9;
       if (pantalla.innerHTML == '0') {
         pantalla.innerHTML = '';
         pantalla.innerHTML = pantalla.innerHTML + '5';
@@ -83,9 +94,11 @@ function calculadora() {
       }
 
       validar(pantalla);
+      cambioTamanio(identificador);
     };
 
     seis.onclick = function (e) {
+      identificador = 10;
       if (pantalla.innerHTML == '0') {
         pantalla.innerHTML = '';
         pantalla.innerHTML = pantalla.innerHTML + '6';
@@ -94,9 +107,11 @@ function calculadora() {
       }
 
       validar(pantalla);
+      cambioTamanio(identificador);
     };
 
     siete.onclick = function (e) {
+      identificador = 4;
       if (pantalla.innerHTML == '0') {
         pantalla.innerHTML = '';
         pantalla.innerHTML = pantalla.innerHTML + '7';
@@ -105,9 +120,11 @@ function calculadora() {
       }
 
       validar(pantalla);
+      cambioTamanio(identificador);
     };
 
     ocho.onclick = function (e) {
+      identificador = 5;
       if (pantalla.innerHTML == '0') {
         pantalla.innerHTML = '';
         pantalla.innerHTML = pantalla.innerHTML + '8';
@@ -116,9 +133,11 @@ function calculadora() {
       }
 
       validar(pantalla);
+      cambioTamanio(identificador);
     };
 
     nueve.onclick = function (e) {
+      identificador = 6;
       if (pantalla.innerHTML == '0') {
         pantalla.innerHTML = '';
         pantalla.innerHTML = pantalla.innerHTML + '9';
@@ -127,9 +146,11 @@ function calculadora() {
       }
 
       validar(pantalla);
+      cambioTamanio(identificador);
     };
 
     cero.onclick = function (e) {
+      identificador = 15;
       if (pantalla.innerHTML == '0') {
         pantalla.innerHTML = '';
         pantalla.innerHTML = pantalla.innerHTML + '0';
@@ -138,53 +159,76 @@ function calculadora() {
       }
 
       validar(pantalla);
+      cambioTamanio(identificador);
     };
 
     punto.onclick = function (e) {
+      identificador = 16;
+
       //Validacion par ver si existe el punto dentro de los numeros
       if (pantalla.innerHTML.indexOf('.') != 1) {
         pantalla.innerHTML = pantalla.innerHTML + '.';
         validar(pantalla);
+        cambioTamanio(identificador);
       }
     };
 
     suma.onclick = function (e) {
+      identificador = 18;
       operandoa = pantalla.innerHTML;
       operacion = '+';
       limpiarOperacion();
+      cambioTamanio(identificador);
     };
 
     resta.onclick = function (e) {
+      identificador = 11;
       operandoa = pantalla.innerHTML;
       operacion = '-';
       limpiarOperacion();
+      cambioTamanio(identificador);
     };
 
     multiplicacion.onclick = function (e) {
+      identificador = 7;
       operandoa = pantalla.innerHTML;
       operacion = '*';
       limpiarOperacion();
+      cambioTamanio(identificador);
     };
 
     division.onclick = function (e) {
+      identificador = 3;
       operandoa = pantalla.innerHTML;
       operacion = '/';
       limpiarOperacion();
+      cambioTamanio(identificador);
     };
 
     igual.onclick = function (e) {
+      identificador = 17;
       operandob = pantalla.innerHTML;
       operaciones();
       validar(pantalla);
+      cambioTamanio(identificador);
     };
 
     on.onclick = function (e) {
+      identificador = 0;
       limpiar();
+      cambioTamanio(identificador);
     };
 
     signo.onclick = function (e) {
-      cambioSigno (pantalla);
+      identificador = 1;
+      cambioSigno(pantalla);
       validar(pantalla);
+      cambioTamanio(identificador);
+    };
+
+    raiz.onclick = function (e) {
+      identificador = 2;
+      cambioTamanio(identificador);
     };
   }
 
@@ -236,6 +280,17 @@ function calculadora() {
     if (display.innerHTML != 0) {
       pantalla.innerHTML = parseFloat(display.innerHTML) * -1;
     }
+  }
+
+  //Funcion para el cambio de tamaño de los botones
+  function cambioTamanio(i) {
+    teclas[i].onmousedown = function (a) {
+      teclas[i].style.transform = 'scale(0.9, 0.9)';
+    };
+
+    teclas[i].onmouseup = function (a) {
+      teclas[i].style.transform = 'scale(1, 1)';
+    };
   }
 
   clicks();
