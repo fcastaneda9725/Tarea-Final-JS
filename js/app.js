@@ -177,12 +177,21 @@ function calculadora() {
       operaciones();
       validar(pantalla);
     };
+
+    on.onclick = function (e) {
+      limpiar();
+    };
+
+    signo.onclick = function (e) {
+      cambioSigno (pantalla);
+      validar(pantalla);
+    };
   }
 
   //Funcion para validar que solo existan 8 caracteres en la pantalla
   function validar(display) {
     if (display.innerHTML.length < 8) {
-      return pantalla;
+      return display;
     }else {
       pantalla.innerHTML = display.innerHTML.substr(0, 8);
 
@@ -211,6 +220,22 @@ function calculadora() {
   //Funcion que limpia la pantalla mientras se hace una operacion
   function limpiarOperacion() {
     pantalla.innerHTML = '';
+  }
+
+  //Funcion para limpiar pantalla por completo y limpiar variables
+  function limpiar() {
+    pantalla.innerHTML = '0';
+    operandoa = 0;
+    operandob = 0;
+    operacion = '';
+    resultado = 0;
+  }
+
+  //Funcion para cambiar el signo de lo mostrado en pantalla
+  function cambioSigno(display) {
+    if (display.innerHTML != 0) {
+      pantalla.innerHTML = parseFloat(display.innerHTML) * -1;
+    }
   }
 
   clicks();
